@@ -17,7 +17,7 @@ jobs:
       - run: touch .env
       - run: echo 'DEV_DATABASE_URL=${{secrets.PG_CONN}}' >> .env
       - run: cat .env
-      - run: docker build -t helmanu/pg-restapiGames:${{github.sha}} .
+      - run: docker build -t helmanu/pg-restapi-games:${{github.sha}} .
       - run: docker images
       - name: docker login
         env:
@@ -26,6 +26,6 @@ jobs:
         run:  docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
         
       - name: docker push
-        run:  docker push ${{secrets.DOCKER_USER}}/pg-restapiGames:${{github.sha}}    
+        run:  docker push ${{secrets.DOCKER_USER}}/pg-restapi-games:${{github.sha}}    
 
      
